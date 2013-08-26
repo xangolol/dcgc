@@ -4,3 +4,10 @@
 .container.main{
   margin-top: 30px;
 }
+
+#account-link a{
+  color: #00BFFF;
+  &:hover{
+    color: #000000;
+  }
+}
