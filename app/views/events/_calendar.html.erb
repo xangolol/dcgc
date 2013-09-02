@@ -1,0 +1,25 @@
+<div id="calendar-container">
+  <div id="day-names" class="">
+    <% Time::DAYS_INTO_WEEK.each do |key, value| %>
+      <% first = " first" if value == 0 %>
+      <div class="day week-day span2 <%= first %>"><%= key %></div>
+    <% end %>
+  </div>
+  <% @days.each do |day| %>
+    <% first = " first" if day[:monday] %>
+    <% if day[:empty] %>
+
+      <div class="day span2 empty <%= first %>"></div>
+
+      <% else %>
+      <% day_number = day[:date].strftime("%d") %>
+
+      <div data-day="<%= day[:date].strftime("%Y-%m-%d") %>" class="day span2<%= first %>">
+        <div class="day-number"><%= day_number %></div>
+        <%= render 'day_events', day: day %>
+        <%= render 'join_dinner_form', day: day %>
+      </div>
+
+    <% end %>
+  <% end  %>
+</div>

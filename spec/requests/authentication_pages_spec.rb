@@ -22,14 +22,11 @@ describe "AuthenticationPages" do
 
     describe "valid information" do
       let(:user) { FactoryGirl.create(:user) }
-      before do
-        fill_in "Email", with: user.email.upcase
-        fill_in "Password", with: user.password
-        click_button "Log in"
-      end
+      before { log_in user }
 
+      it { should have_link('Calendar', href: calendar_path) }
       it { should have_link(user.name, '#') }
-      it { should have_link('Log out', logout_path) }
+      it { should have_link('Log out', href: logout_path) }
 
       describe "logout" do
         before { click_link "Log out" }
@@ -45,12 +42,25 @@ describe "AuthenticationPages" do
     describe "not logged in" do
       before do
         visit root_path
-        fill_in "Email", with: user.email.upcase
-        fill_in "Password", with: user.password
-        click_button "Log in"
+        log_in user
       end
       
       it { should have_link("Log out", logout_path) }
+    end
+
+    describe "in the Events controller" do
+      describe "submitting to the create action" do
+        before { post events_path }
+        specify { expect(response).to redirect_to(login_path) }
+      end
+
+      describe "submitting to the destroy action" do
+        before { delete event_path(1) }
+        specify { expect(response).to redirect_to(login_path) }
+      end
+    end
+
+    describe "in the Users controller" do
     end
   end
 end

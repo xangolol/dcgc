@@ -1,0 +1,92 @@
+// Place all the styles related to the Events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#calendar-container{
+  background-color: lightgrey;
+  float: left;
+
+   .day{
+     height: 130px;
+     width: 120px;
+     background-color: lightblue;
+     margin-left: 5px;
+     margin-bottom: 5px;
+     padding: 5px;
+     position: relative;
+   }
+
+    #day-names{
+      float:left;
+
+      .week-day{
+        height: 20px;
+        text-align: center;
+        font-weight: bold;
+        background-color: transparent;
+      }
+    }
+
+    .day-number{
+      color: #808080;
+      font-size: 110px;
+      font-style: italic;
+      height: 120px;
+      line-height: 110px;
+      opacity: 0.15;
+      position: absolute;
+      width: 120px;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -khtml-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      cursor: default;
+    }
+
+    .first{
+      margin-left: 0;
+    }
+
+    .empty{
+      background-color: transparent;
+    }
+
+    .join-dinner{
+      position: absolute;
+      bottom: 5px;
+      width: 120px;
+    }
+
+    .dinner-label{
+      width: 100%;
+      position: relative;
+      height: 10px;
+      opacity: 0.4;
+      margin-bottom: 5px;
+    }
+
+    .dinner-label.user-1{
+      background-color: green;
+    }
+
+    .dinner-label.user-2{
+      background-color: red;
+    }
+
+    .dinner-label.user-3{
+      background-color: orange;
+    }
+
+    .dinner-label.user-4{
+      background-color: purple;
+    }
+}
+
+.span14{
+  width: 1100px;
+}
+
+#month-navigation{
+  margin-bottom: 20px;
+}

@@ -11,6 +11,8 @@ describe User do
   it { should respond_to(:password) }
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:events) }
+  it { should respond_to(:joins_dinner?) }
 
   it {should be_valid}
 
@@ -77,6 +79,25 @@ describe User do
 
       it { should_not eq user_for_invalid_password }
       specify { expect(user_for_invalid_password).to be_false }
+    end
+  end
+
+  describe "events associations" do
+    before{ user.save }
+    let!(:first_event) { FactoryGirl.create(:event, user: user) }
+    let!(:second_event) { FactoryGirl.create(:event, user: user) }
+
+    it "should have the right order for the events" do
+      expect(user.events.to_a).to eq [first_event, second_event]
+    end
+  end
+
+  describe "joins_dinner method" do
+    before { user.save }
+    let!(:event) { FactoryGirl.create(:event, user: user) }
+
+    it "joins_dinner should equal true" do
+      user.joins_dinner?(event.date).should be_true
     end
   end
 end

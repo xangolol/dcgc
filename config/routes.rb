@@ -1,8 +1,10 @@
 DcgcApp::Application.routes.draw do
+  resources :events
   resources :sessions, only: [:new, :create, :destroy]
   root "static_pages#home"
   match '/login', to: 'sessions#new', via: 'get'
   match '/logout', to: 'sessions#destroy', via: 'delete'
+  match '/calendar', to: 'events#index', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

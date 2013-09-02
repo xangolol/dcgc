@@ -1,0 +1,5 @@
+<% if current_user.joins_dinner? day[:date] %>
+<%= render 'unjoin_dinner', day: day %>
+<% else %>
+<%= render 'join_dinner', day: day %>
+<% end %>

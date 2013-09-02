@@ -5,4 +5,10 @@ FactoryGirl.define do
     password "secret"
     password_confirmation "secret"
   end
+
+  factory :event do
+    event_type "dinner"
+    sequence(:date) { |n| Time.now + n.days }
+    user
+  end
 end

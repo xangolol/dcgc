@@ -1,0 +1,9 @@
+<div class="events-container">
+  <div class="dinner-events">
+    <% day[:events][:dinner].each do |event| %>
+    <div class="dinner-event">
+      <div title="<%= event.user.name %>" class="dinner-label user-<%= event.user.id %> "></div>
+    </div>
+    <% end %>
+  </div>
+</div>

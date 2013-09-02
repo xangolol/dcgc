@@ -1,0 +1,5 @@
+<%= form_for(current_user.events.find_by(event_type: "dinner", date: day[:date]), html: { method: :delete }) do |f| %>
+  <div><%= f.hidden_field :event_type %></div>
+  <div><%= f.hidden_field :date %></div>
+  <%= f.submit "Unjoin dinner", class: "btn btn-danger join-dinner" %>
+<% end %>

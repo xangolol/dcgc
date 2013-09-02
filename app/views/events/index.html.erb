@@ -1,0 +1,14 @@
+<% provide(:title, 'Calendar') %>
+<% if params[:month] then current_month = params[:month].to_i
+else current_month = 0 end %>
+<h1>Calendar</h1>
+<div class="row">
+    <div class="span12">
+      <div class="row" id="month-navigation">
+        <div class="span4 previous text-left"><%= link_to "Previous month", calendar_path(month: current_month - 1) %> </div>
+        <div class="span4 text-center"><%= (DateTime.now + current_month.months).strftime("%B") %></div>
+        <div class="span4 next text-right"><%= link_to "Next month", calendar_path(month: current_month + 1) %></div>
+      </div>
+      <%= render 'events/calendar' %>
+    </div>
+</div>
