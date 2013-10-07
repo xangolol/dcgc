@@ -8,7 +8,7 @@
         <li><%= link_to "Groceries", '#' %></li>
       </ul>
       <ul class="nav pull-right">
-        <li id="account-link"><%= link_to current_user.name, '#' %></li>
+        <li id="account-link"><%= link_to current_user.name, edit_user_path(current_user) %></li>
         <li><%= link_to "Log out", logout_path, method: "delete" %></li>
       </ul>
       <p class="navbar-text nav pull-right">Logged in as </p>

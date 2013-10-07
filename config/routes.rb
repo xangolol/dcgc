@@ -1,6 +1,7 @@
 DcgcApp::Application.routes.draw do
   resources :events
   resources :sessions, only: [:new, :create, :destroy]
+  resources :users, only: [:show, :edit, :update]
   root "static_pages#home"
   match '/login', to: 'sessions#new', via: 'get'
   match '/logout', to: 'sessions#destroy', via: 'delete'
