@@ -3,7 +3,10 @@ class Event < ActiveRecord::Base
   validates :user_id, :date, presence: true
   validates :user_id, uniqueness: { scope: [:event_type, :date] }
 
-  EVENT_TYPE_OPTIONS = ['dinner']
+  EVENT_TYPE_OPTIONS = ['dinner', 'dinner-extra']
   validates :event_type, inclusion: { in: EVENT_TYPE_OPTIONS}
   default_scope -> { order('date') }
+
+  #TODO add dinner with external people
+  #TODO finish dinner-extra modal
 end

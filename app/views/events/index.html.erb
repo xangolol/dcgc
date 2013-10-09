@@ -10,5 +10,6 @@ else current_month = 0 end %>
         <div class="span4 next text-right"><%= link_to "Next month", calendar_path(month: current_month + 1) %></div>
       </div>
       <%= render 'events/calendar' %>
+      <%= render 'shared/modal' %>
     </div>
 </div>

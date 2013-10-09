@@ -36,6 +36,7 @@ module EventsHelper
     def add_day_events(date)
       events = Hash.new
       events[:dinner] = Event.where("date = ? AND event_type = ?", date, 'dinner')
+      events[:dinner_extra] = Event.where("date = ? AND event_type = ? ", date, 'dinner-extra')
       events
     end
 end

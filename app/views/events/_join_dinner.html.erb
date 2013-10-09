@@ -1,5 +1,5 @@
 <%= form_for(current_user.events.build(event_type: "dinner", date: day[:date])) do |f| %>
   <div><%= f.hidden_field :event_type %></div>
   <div><%= f.hidden_field :date %></div>
-  <%= f.submit "Join dinner", class: "btn btn-primary join-dinner" %>
+  <%= f.submit "Join", class: "btn btn-primary join-dinner" %>
 <% end %>

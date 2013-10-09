@@ -52,10 +52,16 @@
       background-color: transparent;
     }
 
-    .join-dinner{
+    .join-dinner, .extra-person{
       position: absolute;
       bottom: 5px;
-      width: 120px;
+      width: 90px;
+    }
+
+    .extra-person{
+      width: 14px;
+      right: 5px;
+      padding: 3px 5px;
     }
 
     .dinner-label{
