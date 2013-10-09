@@ -8,6 +8,13 @@ class EventsController < ApplicationController
   def show
   end
 
+  def new
+    @event = current_user.events.build(event_params)
+    respond_to do |format|
+      format.js
+    end
+  end
+
   def create
     event = current_user.events.build(event_params)
     if event.save
@@ -26,6 +33,6 @@ class EventsController < ApplicationController
 
   private
     def event_params
-      params.require(:event).permit(:event_type, :date, :extra_person)
+      params.require(:event).permit(:event_type, :date, :dinner_guest)
     end
 end

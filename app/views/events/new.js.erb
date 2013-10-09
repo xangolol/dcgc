@@ -1,0 +1,4 @@
+$("#modal").html("<%= escape_javascript render 'events/dinner_guest' %>");
+$("#modal .btn-primary").click(function(){
+  $("#modal form#new_event").submit();
+});

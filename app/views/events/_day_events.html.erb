@@ -6,10 +6,10 @@
     </div>
     <% end %>
   </div>
-  <div class="dinner-extra-events">
-    <% day[:events][:dinner_extra].each do |event| %>
-    <div class="dinner-extra-event">
-      <div title="<%= event.extra_person %>" class="dinner-label user-<%= event.user.id %> "></div>
+  <div class="dinner-guest-events">
+    <% day[:events][:dinner_guest].each do |event| %>
+    <div class="dinner-guest-event">
+      <div title="<%= event.dinner_guest %>" class="dinner-label user-<%= event.user.id %> "></div>
     </div>
     <% end %>
   </div>

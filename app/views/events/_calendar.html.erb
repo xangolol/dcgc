@@ -14,7 +14,7 @@
       <% else %>
       <% day_number = day[:date].strftime("%d") %>
 
-      <div data-day="<%= day[:date].strftime("%Y-%m-%d") %>" class="day span2<%= first %>">
+      <div data-day="<%= day[:date].strftime("%Y-%m-%d") %>" class="day span2<%= first %> <%= " today" if day[:today]  %>">
         <div class="day-number"><%= day_number %></div>
         <%= render 'day_events', day: day %>
         <%= render 'join_dinner_form', day: day %>

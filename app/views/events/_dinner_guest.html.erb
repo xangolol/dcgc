@@ -1,0 +1,16 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+  <h3 id="myModalLabel">Add dinner guest</h3>
+</div>
+<div class="modal-body">
+  <%= form_for @event do |f| %>
+  <div><%= f.hidden_field :event_type %></div>
+  <div><%= f.hidden_field :date %></div>
+  <div><%= f.label :dinner_guest %></div>
+  <div><%= f.text_field :dinner_guest %></div>
+<% end %>
+</div>
+<div class="modal-footer">
+  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  <button class="btn btn-primary">Add dinner guest</button>
+</div>

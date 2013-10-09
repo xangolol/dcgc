@@ -4,4 +4,6 @@
 
 jQuery(document).ready ->
   jQuery(".dinner-label").tooltip()
+  jQuery(".button_to button[type=submit]").click ->
+    jQuery(this).parents(".button_to").submit()
 

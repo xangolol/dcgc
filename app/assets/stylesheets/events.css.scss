@@ -48,18 +48,23 @@
       margin-left: 0;
     }
 
+    .today .day-number{
+      color: #000000;
+      opacity: 0.50;
+    }
+
     .empty{
       background-color: transparent;
     }
 
-    .join-dinner, .extra-person{
+    .join-dinner, .dinner-guest{
       position: absolute;
       bottom: 5px;
       width: 90px;
     }
 
-    .extra-person{
-      width: 14px;
+    .dinner-guest{
+      width: 26px;
       right: 5px;
       padding: 3px 5px;
     }

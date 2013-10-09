@@ -3,4 +3,6 @@
 <% else %>
 <%= render 'join_dinner', day: day %>
 <% end %>
-<div class="btn extra-person" data-toggle="modal" data-target="#modal"><i class="icon-user"></i></div>
+<%= button_to new_event_path("event[event_type]" => "dinner-guest", "event[date]" => day[:date]), remote: true, method: :get, class: "btn dinner-guest", data: {toggle: "modal", target: "#modal" } do %>
+<i class="icon-user"></i>
+<% end %>

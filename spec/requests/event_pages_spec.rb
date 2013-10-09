@@ -30,7 +30,7 @@ describe "EventPages" do
       describe "joining dinner" do
         it "should be able to join dinner" do
           expect do
-            click_button('Join dinner', match: :first)
+            click_button('Join', match: :first)
           end.to change(Event, :count).by(+1)
         end
       end
@@ -38,7 +38,7 @@ describe "EventPages" do
       describe "unjoining dinner" do
         it "should be able to unjoin dinner" do
           expect do
-            click_button('Unjoin dinner', match: :first)
+            click_button('Unjoin', match: :first)
           end.to change(Event, :count).by(-1)
         end
       end
