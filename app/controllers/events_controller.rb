@@ -19,6 +19,8 @@ class EventsController < ApplicationController
     event = current_user.events.build(event_params)
     if event.save
       flash[:success] = "You have joined dinner on " + event_params[:date]
+      #TODO change message for dinner guest
+      #TODO fix turbolinking fucking up modal load
     else
       flash[:error] = "You have already joined dinner on this date"
     end
