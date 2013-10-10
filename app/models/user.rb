@@ -7,6 +7,6 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }
 
   def joins_dinner?(date)
-    events.find_by(date: date, event_type: "dinner")
+    events.find_by(date: date, category: "dinner")
   end
 end
