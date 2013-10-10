@@ -11,20 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20131010135542) do
+=======
+ActiveRecord::Schema.define(version: 20131010153337) do
+>>>>>>> master
 
   create_table "events", force: true do |t|
     t.date     "date"
-    t.string   "event_type"
+    t.string   "category"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "dinner_guest"
   end
 
+  add_index "events", ["category"], name: "index_events_on_category"
   add_index "events", ["date"], name: "index_events_on_date"
-  add_index "events", ["event_type"], name: "index_events_on_event_type"
-  add_index "events", ["user_id", "date", "event_type", "dinner_guest"], name: "index_events_date_type_guest", unique: true
+  add_index "events", ["user_id", "date", "category", "dinner_guest"], name: "index_events_date_type_guest", unique: true
   add_index "events", ["user_id"], name: "index_events_on_user_id"
 
   create_table "expenses", force: true do |t|

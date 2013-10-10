@@ -38,8 +38,8 @@ module EventsHelper
 
     def add_day_events(date)
       events = Hash.new
-      events[:dinner] = Event.where("date = ? AND event_type = ?", date, 'dinner')
-      events[:dinner_guest] = Event.where("date = ? AND event_type = ? ", date, 'dinner-guest')
+      events[:dinner] = Event.where("date = ? AND category = ?", date, 'dinner')
+      events[:dinner_guest] = Event.where("date = ? AND category = ? ", date, 'dinner-guest')
       events
     end
 end

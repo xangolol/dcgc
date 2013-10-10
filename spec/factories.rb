@@ -7,7 +7,7 @@ FactoryGirl.define do
   end
 
   factory :event do
-    event_type "dinner"
+    category "dinner"
     sequence(:date) { |n| Time.now + n.days }
     user
   end

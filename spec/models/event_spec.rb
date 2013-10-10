@@ -7,7 +7,7 @@ describe Event do
 
   subject { event }
 
-  it { should respond_to(:event_type) }
+  it { should respond_to(:category) }
   it { should respond_to(:date) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
@@ -23,7 +23,7 @@ describe Event do
   describe "validate type" do
 
     describe "empty type" do
-      before { event.event_type = nil }
+      before { event.category = nil }
       it {should_not be_valid }
     end
 
@@ -31,7 +31,7 @@ describe Event do
       it "should be invalid" do
         types = %w(wrong dinners)
         types.each do |wrong_type|
-          event.event_type = wrong_type
+          event.category = wrong_type
           expect(event).not_to be_valid
         end
       end
@@ -41,7 +41,7 @@ describe Event do
       it "should be valid" do
         types = %w(dinner)
         types.each do |valid_type|
-          event.event_type = valid_type
+          event.category = valid_type
           expect(event).to be_valid
         end
       end
