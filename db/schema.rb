@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131009160302) do
+ActiveRecord::Schema.define(version: 20131010135542) do
 
   create_table "events", force: true do |t|
     t.date     "date"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 20131009160302) do
   add_index "events", ["event_type"], name: "index_events_on_event_type"
   add_index "events", ["user_id", "date", "event_type", "dinner_guest"], name: "index_events_date_type_guest", unique: true
   add_index "events", ["user_id"], name: "index_events_on_user_id"
+
+  create_table "expenses", force: true do |t|
+    t.integer  "user_id"
+    t.date     "date"
+    t.decimal  "amount",     precision: 8, scale: 2
+    t.string   "category"
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "expenses", ["date"], name: "index_expenses_on_date"
+  add_index "expenses", ["user_id"], name: "index_expenses_on_user_id"
 
   create_table "users", force: true do |t|
     t.string   "email"

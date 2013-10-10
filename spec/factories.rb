@@ -11,4 +11,11 @@ FactoryGirl.define do
     sequence(:date) { |n| Time.now + n.days }
     user
   end
+
+  factory :expense do
+    category "food"
+    sequence(:date) { |n| Time.now + n.days }
+    user
+    amount 10.50
+  end
 end

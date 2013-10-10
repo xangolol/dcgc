@@ -13,6 +13,7 @@ describe User do
   it { should respond_to(:authenticate) }
   it { should respond_to(:events) }
   it { should respond_to(:joins_dinner?) }
+  it { should respond_to(:expenses) }
 
   it {should be_valid}
 
