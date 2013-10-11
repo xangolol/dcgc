@@ -11,11 +11,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20131010135542) do
-=======
+
 ActiveRecord::Schema.define(version: 20131010153337) do
->>>>>>> master
 
   create_table "events", force: true do |t|
     t.date     "date"
