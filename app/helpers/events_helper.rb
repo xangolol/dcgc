@@ -1,9 +1,7 @@
 module EventsHelper
 
   def create_calendar
-    current_month = DateTime.now + params[:month].to_i.months
-
-    @days = days_of_month current_month.month, current_month.year
+    @days = days_of_month selected_month.month, selected_month.year
     shift_days
   end
 

@@ -93,6 +93,16 @@ describe User do
     end
   end
 
+  describe "expenses associations" do
+    before{ user.save }
+    let!(:first_expense) { FactoryGirl.create(:expense, user: user) }
+    let!(:second_expense) { FactoryGirl.create(:expense, user: user) }
+
+    it "should have the right order for the expenses" do
+      expect(user.expenses.to_a).to eq [first_expense, second_expense]
+    end
+  end
+
   describe "joins_dinner method" do
     before { user.save }
     let!(:event) { FactoryGirl.create(:event, user: user) }

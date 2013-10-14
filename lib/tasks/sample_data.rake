@@ -32,7 +32,7 @@ end
 
 def make_dinner_events
   users = User.all
-  50.times do
+  100.times do
     date = pick_random_dinner_date(users)
     category = "dinner"
     user = pick_random_user(users, date)
@@ -42,7 +42,7 @@ end
 
 def make_dinner_guests
   events = Event.all
-  4.times do
+  10.times do
     dinner = events.sample
     date = dinner.date
     category = "dinner-guest"
@@ -53,7 +53,7 @@ end
 
 def make_expenses
   users = User.all
-  10.days.ago.to_date.upto(10.days.from_now.to_date) do |date| 
+  30.days.ago.to_date.upto(30.days.from_now.to_date) do |date| 
     if date.day.even?
       category = "food"
       amount = rand(8.0..30.0)
@@ -79,7 +79,7 @@ def pick_random_user(users, date)
 end
 
 def pick_random_dinner_date(users)
-  date = rand(-10.days..10.days).ago
+  date = rand(-30.days..30.days).ago
 
   size = Event.where("date = ? AND category = ?", date.strftime("%Y-%m-%d"), "dinner").size
 

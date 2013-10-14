@@ -1,0 +1,28 @@
+<% provide(:title, 'Groceries') %>
+<h1>Groceries</h1>
+
+<div class="row" id="expenses-table">
+	<div class="span6">
+		<h2>Food</h2>
+	</div>
+	
+	<div class="span6"><h2>
+		Common goods</h2>
+	</div>
+
+	<div class="span12">
+		<%= render 'shared/month_navigation', path: 'groceries'  %>
+	</div>
+
+	<div class="span6 food-expenses">
+		<table class="table table-striped">
+			<%= render @food_expenses %>
+		</table>
+	</div>
+
+	<div class="span6 common-good-expenses">
+		<table class="table table-striped">
+			<%= render @common_goods_expenses %>
+		</table>
+	</div>
+</div>

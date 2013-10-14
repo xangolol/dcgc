@@ -1,6 +1,9 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "_colors.css.scss";
+
 #calendar-container{
   background-color: lightgrey;
   float: left;
@@ -78,19 +81,19 @@
     }
 
     .dinner-label.user-1{
-      background-color: green;
+      background-color: $customColorUser1;
     }
 
     .dinner-label.user-2{
-      background-color: red;
+      background-color: $customColorUser2;
     }
 
     .dinner-label.user-3{
-      background-color: orange;
+      background-color: $customColorUser3;
     }
 
     .dinner-label.user-4{
-      background-color: purple;
+      background-color: $customColorUser4;
     }
 }
 

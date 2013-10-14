@@ -1,0 +1,5 @@
+<tr class="user-<%= expense.user_id %>">
+	<td><%= number_to_currency(expense.amount, unit: "&euro; ") %></td>
+	<td><div class="name"><%= expense.user.name %></div></td>
+	<td class="right"><%= expense.date.to_s(:long_ordinal) %></td>
+</tr>

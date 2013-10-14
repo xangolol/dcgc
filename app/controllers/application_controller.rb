@@ -6,6 +6,10 @@ class ApplicationController < ActionController::Base
 
   before_action :not_logged_in
 
+  def selected_month
+    DateTime.now + params[:month].to_i.months
+  end
+
   private
     def not_logged_in
       unless logged_in?

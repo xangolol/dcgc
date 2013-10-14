@@ -1,0 +1,6 @@
+<% current_month = current_month_navigation_number %>
+<div class="row" id="month-navigation">
+	<div class="span4 previous text-left"><%= link_to "Previous month",  self.send(path+"_path", month: current_month - 1) %> </div>
+  <div class="span4 text-center"><strong><%= (DateTime.now + current_month.months).strftime("%B") %></strong></div>
+  <div class="span4 next text-right"><%= link_to "Next month",  self.send(path+"_path", month: current_month + 1) %></div>
+</div>
