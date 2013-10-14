@@ -41,5 +41,6 @@ module EventsHelper
       events[:dinner] = Event.where("date = ? AND category = ?", date, 'dinner')
       events[:dinner_guest] = Event.where("date = ? AND category = ? ", date, 'dinner-guest')
       events
+      #TODO Order the events for consistency, this looks really dumb
     end
 end

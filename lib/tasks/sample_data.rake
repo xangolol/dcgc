@@ -4,6 +4,7 @@ namespace :db do
    make_users
    make_dinner_events
    make_dinner_guests
+   make_expenses
   end
 end
 
@@ -47,6 +48,24 @@ def make_dinner_guests
     category = "dinner-guest"
     name = Faker::Name.name
     dinner.user.events.create!(date: date, category: category, dinner_guest: name)
+  end
+end
+
+def make_expenses
+  users = User.all
+  10.days.ago.to_date.upto(10.days.from_now.to_date) do |date| 
+    if date.day.even?
+      category = "food"
+      amount = rand(8.0..30.0)
+      users.sample.expenses.create(date: date, category: category, amount: amount)
+
+      #sometimes we also have some common goods bought
+      if [true, false].sample 
+        category = "common-goods"
+        amount = rand(5.0..15.0)
+        users.sample.expenses.create(date: date, category: category, amount: amount)
+      end
+    end
   end
 end
 

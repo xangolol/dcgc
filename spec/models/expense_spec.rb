@@ -39,6 +39,16 @@ describe Expense do
   	end
   end
 
+  describe "amount should be rounded to 2 decimals" do
+    before do 
+      expense.amount = 15.5428 
+      expense.save
+    end
+    it "blabla" do
+      expect(expense.reload.amount.to_s).to eq("15.54")
+    end
+  end
+
   describe "categories" do
   	describe "wrong categories" do
   		it "should be invalid" do
