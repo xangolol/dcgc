@@ -22,3 +22,25 @@ $opacity: .25;
 		color: $customColorUser4;
 	}
 }
+
+.expense-form{
+	.row{
+		margin: 0;
+	}
+
+	.date {
+		margin-left: 62px;
+
+		.day{
+			width: 60px;
+		}
+
+		.month{
+			width: 115px;
+		}
+
+		.year{
+			width: 75px;
+		}
+	}
+}

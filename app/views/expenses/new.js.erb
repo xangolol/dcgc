@@ -1,0 +1,12 @@
+$("#modal").html("<%= escape_javascript render 'expenses/expense_form' %>");
+$("#modal .btn-primary").click(function(){
+	var amount = $("#modal .expense-form input#expense_amount");
+	var value = amount.val();
+
+	if(value <= 0 || $.trim(value).length == 0 || value > 100){
+		amount.parent().addClass('control-group error')
+	} 
+	else {
+		$("#modal form#new_expense").submit();
+	}
+});

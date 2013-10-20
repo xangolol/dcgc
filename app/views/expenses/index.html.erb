@@ -1,6 +1,10 @@
 <% provide(:title, 'Groceries') %>
 <h1>Groceries</h1>
 
+<div class="row" id="expenses-buttons">
+	<%= button_to('Add new grocery', new_expense_path, remote: true, method: :get, data: {toggle: 'modal', target: '#modal'}, class: "btn btn-primary btn-large") %>
+ </div>
+
 <div class="row" id="expenses-table">
 	<div class="span6">
 		<h2>Food</h2>
@@ -11,7 +15,7 @@
 	</div>
 
 	<div class="span12">
-		<%= render 'shared/month_navigation', path: 'groceries'  %>
+		<%= render 'shared/month_navigation', path: 'expenses'  %>
 	</div>
 
 	<div class="span6 food-expenses">
@@ -26,3 +30,5 @@
 		</table>
 	</div>
 </div>
+
+<%= render 'shared/modal' %>

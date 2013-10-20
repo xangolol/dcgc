@@ -1,0 +1,30 @@
+<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	<h3 id="myModalLabel">Add grocery</h3>
+</div>
+<div class="modal-body">
+	<div class="expense-form">
+		<%= form_for @expense do |form| %>
+		<div class="row">
+			<div class="span2">
+				<%= form.label :amount, class: "control-label" %>
+				<%= form.number_field :amount, placeholder: '0.00', in: 0..100 %>
+			</div>
+			<div class="span4 date">
+				<%= form.label :date %>
+				<%= form.date_select :date, {order: [:day, :month, :year], with_css_classes: true} %>
+			</div>
+		</div>
+		<div class="row">
+			<div class="span6">
+				<%= form.label :category %>
+				<%= form.select :category, expenses_categories_array %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>
+<div class="modal-footer">
+	<button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	<button class="btn btn-primary">Add grocery</button>
+</div>

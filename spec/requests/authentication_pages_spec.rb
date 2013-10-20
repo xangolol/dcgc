@@ -71,6 +71,18 @@ describe "AuthenticationPages" do
         end
       end
 
+      describe "in the Expenses controller" do
+        describe "visiting the expense index" do
+          before { visit expenses_path }
+          it { should have_title("Log in") }
+        end
+
+        describe "submitting to the create action" do
+          before { post expenses_path }
+          specify { expect(response).to redirect_to(login_path) }
+        end
+      end
+
       describe "in the Users controller" do
         describe "visiting the edit page" do
           before { visit edit_user_path(user) }

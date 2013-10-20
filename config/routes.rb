@@ -2,7 +2,7 @@ DcgcApp::Application.routes.draw do
   resources :events
   resources :sessions, only: [:new, :create, :destroy]
   resources :users, only: [:show, :edit, :update]
-  resources :groceries, controller: 'expenses'
+  resources :groceries, controller: 'expenses', as: 'expenses'
   root "static_pages#home"
   match '/login', to: 'sessions#new', via: 'get'
   match '/logout', to: 'sessions#destroy', via: 'delete'

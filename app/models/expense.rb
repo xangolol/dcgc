@@ -15,6 +15,11 @@ class Expense < ActiveRecord::Base
 		where("date > ? AND date < ?", month.beginning_of_month, month.end_of_month )
 	end
 
+	#returns the expense categories
+	def self.categories
+		EXPENSE_CATEGORIES
+	end
+
 	private
 		def round_amount
 			self.amount = self.amount.round(2)

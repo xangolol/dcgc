@@ -14,7 +14,7 @@ FactoryGirl.define do
 
   factory :expense do
     category "food"
-    sequence(:date) { |n| Time.now + n.days }
+    date Time.now
     user
     amount 10.50
   end
