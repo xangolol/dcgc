@@ -18,8 +18,13 @@ class EventsController < ApplicationController
   def create
     event = current_user.events.build(event_params)
     if event.save
-      flash[:success] = "You have joined dinner on " + event_params[:date]
-      #TODO change message for dinner guest
+      if(event_params[:category] == "dinner-guest")
+        person = event_params[:dinner_guest].capitalize
+      else
+        person = "You"
+      end
+
+      flash[:success] = person + " joined dinner on " + event_params[:date]
     else
       flash[:error] = "You have already joined dinner on this date"
     end

@@ -1,5 +1,4 @@
 class ExpensesController < ApplicationController
-	#TODO make create, new and index methods
 
 	def new
 		@expense = current_user.expenses.build
@@ -14,7 +13,6 @@ class ExpensesController < ApplicationController
 
 		if expense.save
       flash[:success] = "Your grocery has been added"
-      #TODO change message for dinner guest
     else
       flash[:error] = "Something went horribly wrong, please try again (ps don't blame juriaan)"
     end

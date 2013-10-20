@@ -42,6 +42,21 @@ describe "EventPages" do
           end.to change(Event, :count).by(-1)
         end
       end
+
+      describe "adding dinner guest", js: true do
+        before { page.find(".dinner-guest", match: :first).click }
+        it { should have_selector("#modal .new_event") }
+
+        describe "submit the form" do
+
+          it "should add an event" do
+            expect do
+              fill_in "event_dinner_guest", with: "Tester"
+              click_button "Add dinner guest"
+            end.to change(Event, :count).by(+1)
+          end
+        end
+      end
     end
   end
 end

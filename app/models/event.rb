@@ -5,8 +5,8 @@ class Event < ActiveRecord::Base
 
   EVENT_CATEGORIES = ['dinner', 'dinner-guest']
   validates :category, inclusion: { in: EVENT_CATEGORIES}
-  default_scope -> { order('date') }
+  default_scope -> { order('date, user_id') }
 
-  #TODO Add tests lol...
   #TODO Remove guests
+  #TODO stop joining/moving on dates in the past
 end
