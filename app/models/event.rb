@@ -7,6 +7,8 @@ class Event < ActiveRecord::Base
   validates :category, inclusion: { in: EVENT_CATEGORIES}
   default_scope -> { order('date, user_id') }
 
+  has_paper_trail
+
   #TODO Remove guests
   #TODO stop joining/moving on dates in the past
 end
