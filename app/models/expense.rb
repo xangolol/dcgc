@@ -10,6 +10,8 @@ class Expense < ActiveRecord::Base
 
 	default_scope -> { order('date') }
 
+	has_paper_trail
+
 	#gives all the expenses for a month. takes the month as a date
 	def self.per_month(month)
 		where("date > ? AND date < ?", month.beginning_of_month, month.end_of_month )

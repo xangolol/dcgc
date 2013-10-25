@@ -7,6 +7,7 @@ DcgcApp::Application.routes.draw do
   match '/login', to: 'sessions#new', via: 'get'
   match '/logout', to: 'sessions#destroy', via: 'delete'
   match '/calendar', to: 'events#index', via: 'get'
+  match '/log', to: 'versions#index', via: 'get'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

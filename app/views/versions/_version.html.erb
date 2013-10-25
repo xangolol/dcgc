@@ -1,0 +1,8 @@
+<tr class="user-<%= version.whodunnit %>">
+	<% version = version_array(version) %>
+	<td class="change-user"><span class="name"><%= version[:changed_by] %></span></td>
+	<td class="change-action"><%= version[:action] %></td>
+	<td class="change-class"><%= version[:class] %></td>
+	<td class="change-date"><%= version[:date] %></td>
+	<td class="change-date"><%= raw version[:details] %></td>
+</tr>

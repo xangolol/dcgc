@@ -1,0 +1,17 @@
+<% provide(:title, 'Log') %>
+<h1>Log</h1>
+<div class="row">
+	<div class="span12">
+		<%= render 'shared/month_navigation', path: 'log' %>
+		<table class="table table-striped">
+			<tr>
+				<th>Changed by</th>
+				<th>Action</th>
+				<th>Type</th>
+				<th>Date</th>
+				<th>Details</th>
+			</tr>
+			<%= render @versions %>
+		</table>
+	</div>
+</div>

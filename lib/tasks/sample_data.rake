@@ -1,10 +1,10 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-   make_users
-   make_dinner_events
-   make_dinner_guests
-   make_expenses
+    make_users
+    make_dinner_events
+    make_dinner_guests
+    make_expenses
   end
 end
 
@@ -36,6 +36,7 @@ def make_dinner_events
     date = pick_random_dinner_date(users)
     category = "dinner"
     user = pick_random_user(users, date)
+    PaperTrail.whodunnit = user.id
     user.events.create!(date: date, category: category)
   end
 end
@@ -47,6 +48,7 @@ def make_dinner_guests
     date = dinner.date
     category = "dinner-guest"
     name = Faker::Name.name
+    PaperTrail.whodunnit = dinner.user.id
     dinner.user.events.create!(date: date, category: category, dinner_guest: name)
   end
 end
@@ -57,13 +59,17 @@ def make_expenses
     if date.day.even?
       category = "food"
       amount = rand(8.0..30.0)
-      users.sample.expenses.create(date: date, category: category, amount: amount)
+      user = users.sample
+      PaperTrail.whodunnit = user.id
+      user.expenses.create(date: date, category: category, amount: amount)
 
       #sometimes we also have some common goods bought
       if [true, false].sample 
         category = "common-goods"
         amount = rand(5.0..15.0)
-        users.sample.expenses.create(date: date, category: category, amount: amount)
+        user = users.sample
+        PaperTrail.whodunnit = user.id
+        user.expenses.create(date: date, category: category, amount: amount)
       end
     end
   end

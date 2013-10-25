@@ -1,5 +1,6 @@
 
 @import "bootstrap";
+@import "_colors.css.scss";
 
 /* mixins, variables, etc. */
 @mixin box_sizing {
@@ -57,4 +58,23 @@ input {
 .field_with_errors {
   @extend .control-group;
   @extend .error;
+}
+
+/* Tables */
+.table{
+  .user-1 td .name{
+    color: $customColorUser1;
+  }
+
+  .user-2 td .name{
+    color: $customColorUser2;
+  }
+
+  .user-3 td .name{
+    color: $customColorUser3;
+  }
+
+  .user-4 td .name{
+    color: $customColorUser4;
+  }
 }
