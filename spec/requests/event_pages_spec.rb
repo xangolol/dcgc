@@ -8,7 +8,7 @@ describe "EventPages" do
 
   before do
     log_in user
-    FactoryGirl.create(:event, user: user)
+    FactoryGirl.create(:event, user: user, date: Time.now)
   end
 
 

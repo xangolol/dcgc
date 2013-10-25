@@ -3,7 +3,7 @@ include ApplicationHelper
 def log_in(user, options={})
   if options[:no_capybara]
     # Sign in when not using Capybara.
-    session[:user_id] = user.id
+    post sessions_path, :email => user.email, :password => user.password
   else
     visit login_path
     fill_in "Email",    with: user.email

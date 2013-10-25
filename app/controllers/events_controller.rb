@@ -1,5 +1,6 @@
 class EventsController < ApplicationController
   include EventsHelper
+  before_action :correct_user, only: :destroy
 
   def index
     create_calendar
@@ -40,5 +41,10 @@ class EventsController < ApplicationController
   private
     def event_params
       params.require(:event).permit(:category, :date, :dinner_guest)
+    end
+
+    def correct_user
+      @event = current_user.events.find_by id: params[:id]
+      redirect_to root_url if @event.nil?
     end
 end

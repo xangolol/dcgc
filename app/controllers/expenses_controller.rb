@@ -9,7 +9,7 @@ class ExpensesController < ApplicationController
 	end
 
 	def create
-		expense = current_user.expenses.build(event_params)
+		expense = current_user.expenses.build(expense_params)
 
 		if expense.save
       flash[:success] = "Your grocery has been added"
@@ -25,7 +25,7 @@ class ExpensesController < ApplicationController
 	end
 
 	private
-    def event_params
+    def expense_params
       params.require(:expense).permit(:category, :date, :amount, :note)
     end
 end
