@@ -9,6 +9,5 @@ class Event < ActiveRecord::Base
 
   has_paper_trail
 
-  #TODO Remove guests
   #TODO stop joining/moving on dates in the past
 end

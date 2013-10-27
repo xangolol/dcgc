@@ -76,24 +76,30 @@
       width: 100%;
       position: relative;
       height: 10px;
-      opacity: 0.4;
       margin-bottom: 5px;
     }
 
     .dinner-label.user-1{
-      background-color: $customColorUser1;
+      background-color: rgba($customColorUser1, 0.4);
     }
 
     .dinner-label.user-2{
-      background-color: $customColorUser2;
+      background-color: rgba($customColorUser2, 0.4);
     }
 
     .dinner-label.user-3{
-      background-color: $customColorUser3;
+      background-color: rgba($customColorUser3, 0.4);
     }
 
     .dinner-label.user-4{
-      background-color: $customColorUser4;
+      background-color: rgba($customColorUser4, 0.4);
+    }
+
+    .dinner-label .icon-remove{
+      float: right;
+      color: black;
+      -moz-transform: scale(0.9);
+      margin-top: -2px
     }
 }
 

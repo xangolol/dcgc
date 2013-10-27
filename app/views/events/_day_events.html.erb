@@ -9,7 +9,13 @@
   <div class="dinner-guest-events">
     <% day[:events][:dinner_guest].each do |event| %>
     <div class="dinner-guest-event">
-      <div title="<%= event.dinner_guest %>" class="dinner-label user-<%= event.user.id %> "></div>
+      <div title="<%= event.dinner_guest %>" class="dinner-label user-<%= event.user.id %> ">
+        <% if event.user == current_user %>
+          <%= link_to event_path(event.id, event: {date: event.date, dinner_guest: event.dinner_guest }), method: :delete do %>
+            <i class="icon-remove"></i>
+          <% end %>
+        <% end %>
+      </div>
     </div>
     <% end %>
   </div>

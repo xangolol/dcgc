@@ -9,6 +9,7 @@ describe "EventPages" do
   before do
     log_in user
     FactoryGirl.create(:event, user: user, date: Time.now)
+    FactoryGirl.create(:event, user: user, date: Time.now, category: "dinner-guest", dinner_guest: "test")
   end
 
 
@@ -26,6 +27,7 @@ describe "EventPages" do
 
       it { should have_selector('.day', count: Time.days_in_month(Time.now.month) + (Date.new(Time.now.year, Time.now.month, 1).cwday - 1) + 7) }
       it { should have_selector('.day .events-container .dinner-events .dinner-event')}
+        it { should have_selector(".dinner-guest-event") }
       
       describe "joining dinner" do
         it "should be able to join dinner" do
@@ -55,6 +57,16 @@ describe "EventPages" do
               click_button "Add dinner guest"
             end.to change(Event, :count).by(+1)
           end
+        end
+      end
+
+      describe "removing dinner guest" do
+        it { should have_selector(".dinner-guest-event .icon-remove") }
+
+        it "click the link" do
+          expect do
+           find(".dinner-guest-event .dinner-label a").click
+          end.to change(Event, :count).by(-1)
         end
       end
     end

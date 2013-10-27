@@ -34,7 +34,11 @@ class EventsController < ApplicationController
 
   def destroy
     Event.find(params[:id]).destroy
-    flash[:success] = "You have unjoined dinner on " + event_params[:date]
+    if(event_params[:dinner_guest])
+      flash[:success] = "You have removed " + event_params[:dinner_guest].capitalize + " from dinner on " + event_params[:date]
+    else
+      flash[:success] = "You have unjoined dinner on " + event_params[:date]
+    end
     redirect_to calendar_url
   end
 
