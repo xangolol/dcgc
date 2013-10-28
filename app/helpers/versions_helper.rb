@@ -39,7 +39,17 @@ module VersionsHelper
 		when "create"
 			"#{changeset[:category][1]} (#{number_to_currency(changeset[:amount][1], unit: "&euro; ")}) on #{changeset[:date][1]}"
 		when "update"
-			"#{changeset[:category][1]} from (#{number_to_currency(changeset[:amount][0], unit: "&euro; ")}) to (#{number_to_currency(changeset[:amount][1], unit: "&euro; ")}) on #{changeset[:date][1]}"
+			if changeset[:amount]
+				before_change = number_to_currency(changeset[:amount][0], unit: "&euro; ")
+				after_change = number_to_currency(changeset[:amount][1], unit: "&euro; ")
+			elsif changeset[:date]
+				before_change = changeset[:date][0] 
+				after_change = changeset[:date][1]
+			elsif changeset[:category]
+				before_change = changeset[:category][0] 
+				after_change = changeset[:category][1]
+			end
+			"#{item.category} from (#{before_change}) to (#{after_change}) on #{changeset[:updated_at][1].to_date}"
 		when "destroy"
 			"#{item.category} (#{number_to_currency(item.amount, unit: "&euro; ")}) on #{item.date}"
 		end

@@ -81,6 +81,8 @@ describe "AuthenticationPages" do
           before { post expenses_path }
           specify { expect(response).to redirect_to(login_path) }
         end
+
+        #add extra specs for destruction etc, 
       end
 
       describe "in the Users controller" do

@@ -1,4 +1,4 @@
-$("#modal").html("<%= escape_javascript render 'expenses/new_expense_modal' %>");
+$("#modal").html("<%= escape_javascript render 'expenses/edit_expense_modal' %>");
 $("#modal .btn-primary").click(function(){
 	var amount = $("#modal .expense-form input#expense_amount");
 	var value = amount.val();
@@ -7,6 +7,6 @@ $("#modal .btn-primary").click(function(){
 		amount.parent().addClass('control-group error')
 	} 
 	else {
-		$("#modal form#new_expense").submit();
+		$("#modal form#edit_expense_<%= @expense.id %>").submit();
 	}
 });

@@ -1,5 +1,10 @@
 <tr class="user-<%= expense.user_id %>">
 	<td><%= number_to_currency(expense.amount, unit: "&euro; ") %></td>
 	<td><div class="name"><%= expense.user.name %></div></td>
-	<td class="right"><%= expense.date.to_s(:long_ordinal) %></td>
+	<td><%= expense.date.to_s(:long_ordinal) %></td>
+	<td>
+		<% if expense.user == current_user %>
+			<%= link_to "Edit", edit_expense_path(expense.id), remote: true, data: {toggle: "modal", target: "#modal"} %>
+		<% end %>
+	</td>
 </tr>
