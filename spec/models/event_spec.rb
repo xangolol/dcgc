@@ -61,4 +61,11 @@ describe Event do
     
     it { @cloned_event.should_not be_valid }
   end
+
+  describe "Methods" do
+    it "should return the amount of dinner events" do
+      10.times { FactoryGirl.create(:event, user: user) }
+      Event.dinner_count.should == 10
+    end
+  end
 end

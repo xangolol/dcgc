@@ -18,4 +18,9 @@ FactoryGirl.define do
     user
     amount 10.50
   end
+
+  factory :stat do
+    name "test-statistic"
+    value 0
+  end
 end

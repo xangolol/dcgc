@@ -1,0 +1,5 @@
+<% provide(:title, 'Balance') %>
+<h1>Balance</h1>
+<div class="row">
+	Total dinner cost: <%= number_to_currency(@balance, unit: '&euro;') %>
+</div>

@@ -3,6 +3,7 @@ require 'spec_helper'
 describe Expense do
   let(:user) { FactoryGirl.create(:user) }
   let(:expense) { FactoryGirl.create(:expense, user: user) }
+  let(:expense_common) { FactoryGirl.create(:expense, user: user, category: 'common-goods') }
 
   subject { expense }
 
@@ -74,5 +75,71 @@ describe Expense do
   describe "with note content that is to long" do
   	before { expense.note = "a" * 301 }
   	it { should_not be_valid }
+  end
+
+  describe "Stats" do
+    before do 
+      expense 
+      expense_common
+    end
+
+    describe "Total dinner cost should change on" do
+      it "Creation" do
+        expect { FactoryGirl.create(:expense, user: user) }.to change { Stat.get_total_dinner_cost }.by(+10.5)
+      end
+
+      it "Update higher" do
+        expect do
+          expense.amount = 12.5
+          expense.save
+        end.to change { Stat.get_total_dinner_cost }.by(+2)
+      end
+
+      it "Update lower" do
+        expect do
+          expense.amount = 8.5
+          expense.save
+        end.to change { Stat.get_total_dinner_cost }.by(-2)
+      end
+
+      it "Descruction" do
+        expect { expense.destroy}.to change { Stat.get_total_dinner_cost }.by(-10.5)
+      end
+    end
+
+    describe "Total dinner cost should not change for non food categories" do
+      it "Creation" do
+        expect { FactoryGirl.create(:expense, user: user, category: 'common-goods') }.to_not change { Stat.get_total_dinner_cost }
+      end
+
+      it "Update" do
+        expect do
+          expense_common.amount = 8.5
+          expense_common.save
+        end.to_not change { Stat.get_total_dinner_cost }
+      end
+
+      it "Destruction" do
+        expect { expense_common.destroy }.to_not change { Stat.get_total_dinner_cost }
+      end
+    end
+
+    describe "Switching between categories" do
+      it "food to non food" do
+        expect do
+          expense.category = 'common-goods'
+          expense.amount = 6.5
+          expense.save
+        end.to change { Stat.get_total_dinner_cost }.by(-6.5)
+      end
+
+      it "non food to food" do
+        expect do
+          expense_common.category = 'food'
+          expense_common.amount = 6.5
+          expense_common.save
+        end.to change { Stat.get_total_dinner_cost }.by(+6.5)
+      end
+    end
   end
 end
