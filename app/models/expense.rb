@@ -2,7 +2,7 @@ class Expense < ActiveRecord::Base
 	#callbacks
 	before_save :round_amount
 
-	#TODO refactor these 3 callbacks
+	#TODO refactor these 3 callbacksls s
 	after_create do |expense|
 		if expense.food?
 			Stat.update_total_dinner_cost(expense.amount)

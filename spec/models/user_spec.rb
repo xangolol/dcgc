@@ -14,6 +14,9 @@ describe User do
   it { should respond_to(:events) }
   it { should respond_to(:joins_dinner?) }
   it { should respond_to(:expenses) }
+  it { should respond_to(:dinner_cost) }
+  it { should respond_to(:total_cost) }
+  it { should respond_to(:total_expense) }
 
   it {should be_valid}
 
@@ -101,6 +104,10 @@ describe User do
     it "should have the right order for the expenses" do
       expect(user.expenses.to_a).to eq [first_expense, second_expense]
     end
+
+    it "should give the correct total_expense" do
+      expect(user.total_expense).to eq 21
+    end
   end
 
   describe "joins_dinner method" do
@@ -109,6 +116,23 @@ describe User do
 
     it "joins_dinner should equal true" do
       user.joins_dinner?(event.date).should be_true
+    end
+  end
+
+  describe "cost methods" do
+    before { user.save }
+    let!(:first_event) { FactoryGirl.create(:event, user: user) }
+    let!(:second_event) { FactoryGirl.create(:event, user: user) }
+    let!(:food_expense) { FactoryGirl.create(:expense, user: user) }
+    let!(:common_good_expense) { FactoryGirl.create(:expense, user: user, category: 'common-goods') }
+    let!(:temp_user) { FactoryGirl.create(:user) }
+
+    it "dinner_cost should be the correct amount" do
+      expect(user.dinner_cost).to eq 10.5
+    end
+
+    it "total_cost should be the correct amount" do
+      expect(user.total_cost).to eq 10.5 + 10.5/2
     end
   end
 end

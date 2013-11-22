@@ -20,4 +20,12 @@ class User < ActiveRecord::Base
   def dinner_cost
     self.events.dinner_count * Stat.average_dinner_cost
   end
+
+  def total_cost
+    self.dinner_cost + Stat.average_common_goods_cost
+  end
+
+  def total_expense
+    self.expenses.inject(0) { |total, expense| total + expense.amount }
+  end
 end

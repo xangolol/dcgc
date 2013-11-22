@@ -11,6 +11,10 @@ class Stat < ActiveRecord::Base
 		get_total_dinner_cost/Event.dinner_count
 	end
 
+	def self.average_common_goods_cost
+		get_total_common_goods_cost/User.all.size
+	end
+
 	#this method should only be used when the total needs to be recalculated
 	def self.calculate_total_dinner_cost
 		total = 0
@@ -18,6 +22,15 @@ class Stat < ActiveRecord::Base
 			total += expense.amount
 		end
 		Stat.find_by_name("total-dinner-cost").update_attribute('value', total)
+	end
+
+	#TODO make a field in database and update it in the right way
+	def self.get_total_common_goods_cost
+		total = 0
+		Expense.where("category = 'common-goods'").each do |expense|
+			total += expense.amount
+		end
+		total
 	end
 
 	#dynamic methods
