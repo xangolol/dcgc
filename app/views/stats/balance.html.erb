@@ -6,6 +6,7 @@
 			<thead>
 				<tr>
 					<th>Name</th>
+					<th>Dinners</th>
 					<th>Amount</th>
 					<th>Payed</th>
 					<th>Balance</th>
@@ -16,6 +17,7 @@
 				<% @users.each do |user| %>
 				<tr class="user-<%= user.id %>">
 					<td><span class="name"><%= user.name %></span></td>
+					<td><%= user.events.dinner_count %></td>
 					<td><%= number_to_currency(user.total_cost, unit: '&euro;') %></td>
 					<td><%= number_to_currency(user.total_expense, unit: '&euro;') %></td>
 					<td><%= number_to_currency(user.current_balance, unit: '&euro;') %></td>

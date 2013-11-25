@@ -121,18 +121,18 @@ describe User do
 
   describe "cost methods" do
     before { user.save }
-    let!(:first_event) { FactoryGirl.create(:event, user: user) }
-    let!(:second_event) { FactoryGirl.create(:event, user: user) }
+    let!(:first_event) { FactoryGirl.create(:event, user: user, date: Time.now) }
+    let!(:second_event) { FactoryGirl.create(:event, user: temp_user, date: Time.now) }
     let!(:food_expense) { FactoryGirl.create(:expense, user: user) }
     let!(:common_good_expense) { FactoryGirl.create(:expense, user: user, category: 'common-goods') }
     let!(:temp_user) { FactoryGirl.create(:user) }
 
     it "dinner_cost should be the correct amount" do
-      expect(user.dinner_cost).to eq 10.5
+      expect(user.dinner_cost).to eq 5.25
     end
 
     it "total_cost should be the correct amount" do
-      expect(user.total_cost).to eq 10.5 + 10.5/2
+      expect(user.total_cost).to eq 5.25 + 10.5/2
     end
   end
 end
