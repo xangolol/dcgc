@@ -63,16 +63,18 @@ describe Event do
   end
 
   describe "Methods" do
-    before { 10.times { FactoryGirl.create(:event, user: user) } }
+    before do 
+      10.times { FactoryGirl.create(:event, user: user) }
+      temp_user = FactoryGirl.create(:user) 
+      FactoryGirl.reload 
+      10.times { FactoryGirl.create(:event, user: temp_user) }
+    end
     describe "should return the amount of dinner events" do
       it "only 1 event per day" do
-        Event.dinner_count.should == nil
+        Event.dinner_count.should == 0
       end
 
       it "2 events per day" do
-        temp_user = FactoryGirl.create(:user) 
-        FactoryGirl.reload
-        10.times { FactoryGirl.create(:event, user: temp_user) }
         Event.dinner_count.should == 20
       end
     end

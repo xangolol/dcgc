@@ -24,9 +24,9 @@ class Event < ActiveRecord::Base
   end
 
   #gives all the dates which have more than 1 event
-  #TODO fix the smaller subsets
+  #TODO wtf is this code lol
   def self.multiple_dates
-    self.find_by_sql("SELECT date FROM events GROUP BY date HAVING COUNT(date([date]))> 1").map { |object| object.date }
+    self.find_by_sql("SELECT date FROM events GROUP BY date HAVING COUNT(date)> 1").map { |object| object.date }
   end
 
   #TODO stop joining/moving on dates in the past
