@@ -1,5 +1,59 @@
 <% provide(:title, 'Balance') %>
 <h1>Balance</h1>
 <div class="row">
-	Total dinner cost: <%= number_to_currency(@balance, unit: '&euro;') %>
+	<div class="span12">
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Amount</th>
+					<th>Payed</th>
+					<th>Balance</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<% @users.each do |user| %>
+				<tr class="user-<%= user.id %>">
+					<td><span class="name"><%= user.name %></span></td>
+					<td><%= number_to_currency(user.total_cost, unit: '&euro;') %></td>
+					<td><%= number_to_currency(user.total_expense, unit: '&euro;') %></td>
+					<td><%= number_to_currency(user.current_balance, unit: '&euro;') %></td>
+				</tr>
+				<% end %>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<div class="row">
+	<div class="span6">
+		<h3>Additional info</h3>
+		<table class="table table-striped">
+			<tr>
+				<td>Total food cost</td>
+				<td><%= number_to_currency(Stat.get_total_dinner_cost, unit: '&euro;') %></td>
+			</tr>
+
+			<tr>
+				<td>Average food cost</td>
+				<td><%= number_to_currency(Stat.average_dinner_cost, unit: '&euro;') %></td>
+			</tr>
+
+			<tr>
+				<td>Total dinners</td>
+				<td><%= Event.dinner_count %></td>
+			</tr>
+
+			<tr>
+				<td>Total common goods cost</td>
+				<td><%= number_to_currency(Stat.get_total_common_goods_cost, unit: '&euro;') %></td>
+			</tr>
+
+			<tr>
+				<td>Common goods cost per person</td>
+				<td><%= number_to_currency(Stat.average_common_goods_cost, unit: '&euro;') %></td>
+			</tr>
+		</table>
+	</div>
 </div>

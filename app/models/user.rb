@@ -28,4 +28,8 @@ class User < ActiveRecord::Base
   def total_expense
     self.expenses.inject(0) { |total, expense| total + expense.amount }
   end
+
+  def current_balance
+    self.total_expense - self.total_cost
+  end
 end
