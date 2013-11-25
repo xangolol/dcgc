@@ -34,12 +34,12 @@ class Stat < ActiveRecord::Base
 	end
 
 	#dynamic methods
-	# Stat.all.each do |stat|
-	# 	stat_name = stat.name.gsub('-', '_')
-	# 	define_singleton_method("get_#{stat_name}") do
-	# 		Stat.find_by_name(stat.name).value
-	# 	end
-	# end
+	Stat.all.each do |stat|
+		stat_name = stat.name.gsub('-', '_')
+		define_singleton_method("get_#{stat_name}") do
+			Stat.find_by_name(stat.name).value
+		end
+	end
 
 	private
 end
