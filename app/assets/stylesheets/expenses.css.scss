@@ -9,8 +9,20 @@ $opacity: .25;
 		margin: 0;
 	}
 
+	.input-holder{
+		height: 27px;
+		float: left;
+		margin-bottom: 10px;
+		line-height: 27px;
+	}
+
+	.calculator{
+		width: 72%;
+		float: right;
+	}
+
 	.date {
-		margin-left: 62px;
+		margin-left: 53px;
 
 		.day{
 			width: 60px;

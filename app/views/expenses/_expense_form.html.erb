@@ -4,7 +4,9 @@
 		<div class="row">
 			<div class="span2">
 				<%= form.label :amount, class: "control-label" %>
-				<%= form.number_field :amount, placeholder: '0.00', in: 0..100 %>
+				<div class="input-holder">
+					Total: <%= form.number_field :amount, placeholder: '0.00', in: 0..100, class: "calculator" %>
+				</div>
 			</div>
 			<div class="span4 date">
 				<%= form.label :date %>
