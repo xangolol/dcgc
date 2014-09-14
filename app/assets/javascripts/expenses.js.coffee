@@ -11,12 +11,26 @@
     answer.parent().before '<div class="input-holder hide original"><input class="calculator" type="number" /></div>'
     original = modal.find(".original")
 
+    modal.on 'keypress', '#expense_amount', (e) ->
+      if e.charCode is 43 or e.charCode is 45
+        e.preventDefault()
+        clone = original.clone().removeClass("hide original").addClass('clone')
+        label.after clone
+        clone.children('.calculator').val(answer.val())
+        if e.charCode is 43
+          clone.prepend('+')
+          clone.children('.calculator').addClass('add')
+        if e.charCode is 45
+          clone.prepend('-')
+          clone.children('.calculator').addClass('subtract')
+        modal.off 'keypress', '#expense_amount'
+
     modal.on 'keypress', ".calculator", (e) ->
       if e.charCode is 43 or e.charCode is 45
         e.preventDefault()
         clone = original.clone().removeClass("hide original").addClass('clone')
         answer.parents(".input-holder").before clone
-        clone.children('.calculator').focus()
+        clone.children('.calculator').focus().select()
         if e.charCode is 43
           clone.prepend('+')
           clone.children('.calculator').addClass('add')
@@ -38,20 +52,6 @@
         subtract += parseFloat($(this).val(), 10)
 
       answer.val((add - subtract).toFixed(2))
-
-    modal.on 'keypress', '#expense_amount', (e) ->
-      if e.charCode is 43 or e.charCode is 45
-        e.preventDefault()
-        clone = original.clone().removeClass("hide original").addClass('clone')
-        label.after clone
-        clone.children('.calculator').val(answer.val())
-        if e.charCode is 43
-          clone.prepend('+')
-          clone.children('.calculator').addClass('add')
-        if e.charCode is 45
-          clone.prepend('-')
-          clone.children('.calculator').addClass('subtract')
-        modal.off 'keypress', '#expense_amount'
 ) jQuery
 
 jQuery(document).ready ->
